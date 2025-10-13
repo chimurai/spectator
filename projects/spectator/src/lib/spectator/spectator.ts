@@ -1,5 +1,7 @@
 import { ChangeDetectorRef, DebugElement } from '@angular/core';
 import { ComponentFixture, DeferBlockFixture, DeferBlockState } from '@angular/core/testing';
+import { TestbedHarnessEnvironment } from '@angular/cdk/testing/testbed';
+import { HarnessLoader } from '@angular/cdk/testing';
 
 import { DomSpectator } from '../base/dom-spectator';
 import { setProps } from '../internals/query';
@@ -11,6 +13,11 @@ import { DeferBlocks, InferInputSignal, InferInputSignals, NestedDeferBlocks } f
  * @publicApi
  */
 export class Spectator<C> extends DomSpectator<C> {
+  /** `HarnessLoader` rooted at the given fixture's root element */
+  public loader: HarnessLoader;
+  /** HarnessLoader at the document root. This can be used if harnesses are located outside of a fixture (e.g. overlays appended to the document body). */
+  public rootLoader: HarnessLoader;
+
   constructor(
     public fixture: ComponentFixture<C>,
     public debugElement: DebugElement,
@@ -18,6 +25,8 @@ export class Spectator<C> extends DomSpectator<C> {
     public element: HTMLElement,
   ) {
     super(fixture, debugElement, instance, element);
+    this.loader = TestbedHarnessEnvironment.loader(fixture);
+    this.rootLoader = TestbedHarnessEnvironment.documentRootLoader(fixture);
   }
 
   public get component(): C {

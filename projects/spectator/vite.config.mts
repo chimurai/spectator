@@ -16,7 +16,7 @@ export default defineConfig(({ mode }) => ({
     environment: 'jsdom',
     include: ['vitest/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
     reporters: ['default'],
-    pool: 'forks',
+    pool: 'vmThreads', // Harness (spectator.rootLoader) - TypeError: Failed to construct 'MouseEvent': member view is not of type Window (https://github.com/vitest-dev/vitest/issues/4685)
   },
   define: {
     'import.meta.vitest': mode !== 'production',

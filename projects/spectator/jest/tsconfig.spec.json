@@ -1,6 +1,7 @@
 {
   "extends": "../tsconfig.spec.json",
   "compilerOptions": {
+    "target": "es2016", // Harness (spectator.rootLoader) "Expected to be running in 'ProxyZone', but it was not found" (https://github.com/thymikee/jest-preset-angular/issues/1058#issuecomment-933310096)
     "isolatedModules": true,
     "emitDecoratorMetadata": false
   },
