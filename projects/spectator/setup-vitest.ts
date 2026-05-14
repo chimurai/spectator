@@ -1,13 +1,17 @@
+import '@angular/compiler';
 import '@analogjs/vitest-angular/setup-zone';
+import { setupTestBed } from '@analogjs/vitest-angular/setup-testbed';
+import { provideZoneChangeDetection } from '@angular/core';
 
-import { BrowserDynamicTestingModule, platformBrowserDynamicTesting } from '@angular/platform-browser-dynamic/testing';
-import { getTestBed } from '@angular/core/testing';
 import { defineGlobalsInjections } from '@ngneat/spectator';
 import { TranslateService } from './test/translate.service';
 import { TranslatePipe } from './test/translate.pipe';
 import { vi } from 'vitest';
 
-getTestBed().initTestEnvironment(BrowserDynamicTestingModule, platformBrowserDynamicTesting());
+setupTestBed({
+  zoneless: false,
+  providers: [provideZoneChangeDetection()],
+});
 
 defineGlobalsInjections({
   providers: [TranslateService],
