@@ -88,7 +88,7 @@
     "typescript": "5.9.3",
     "typescript-eslint": "^8.33.1",
     "vite-tsconfig-paths": "^5.1.4",
-    "vitest": "4.1.6",
+    "vitest": "3.2.4",
     "zone.js": "0.15.0"
   },
   "config": {
