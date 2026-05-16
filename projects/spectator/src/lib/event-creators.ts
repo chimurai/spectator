@@ -83,7 +83,6 @@ export function createKeyboardEvent(type: string, keyOrKeyCode: string | number 
   });
 
   // IE won't set `defaultPrevented` on synthetic events so we need to do it manually.
-  // eslint-disable-next-line
   event.preventDefault = function () {
     Object.defineProperty(event, 'defaultPrevented', { configurable: true, get: () => true });
 

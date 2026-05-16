@@ -37,7 +37,6 @@ export function setProps(componentRef: ComponentRef<any>, keyOrKeyValues: any, v
   if (isString(keyOrKeyValues)) {
     componentRef.setInput(keyOrKeyValues, value);
   } else {
-    // eslint-disable-next-line guard-for-in
     for (const p in keyOrKeyValues) {
       componentRef.setInput(p, keyOrKeyValues[p]);
     }
@@ -62,7 +61,6 @@ export function setHostProps(componentRef: ComponentRef<any>, keyOrKeyValues: an
   if (isString(keyOrKeyValues)) {
     componentRef.instance[keyOrKeyValues] = value;
   } else {
-    // eslint-disable-next-line guard-for-in
     for (const p in keyOrKeyValues) {
       componentRef.instance[p] = keyOrKeyValues[p];
     }
